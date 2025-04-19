@@ -1,0 +1,6 @@
+[package]
+name = "Fib"
+type = "lib"
+authors = [""]
+
+[dependencies]
