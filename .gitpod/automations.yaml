@@ -6,3 +6,6 @@ tasks:
       cd lampe
       lake exe cache get
       lake build
+
+      code --install-extension leanprover.lean4
+      code --install-extension noir-lang.vscode-noir
