@@ -1,5 +1,5 @@
 {
-	"name": "Gitpod",
+	"name": "TryLampe",
 	"build": {
         "context": ".",
         "dockerfile": "Dockerfile"
@@ -11,5 +11,6 @@
                 "noir-lang.vscode-noir"
             ]
         }
-    }
+    },
+    "postCreateCommand": "cd lampe && lake exe cache get && lake build && popd"
 }
