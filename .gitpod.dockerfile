@@ -25,7 +25,8 @@ RUN . ~/.profile && elan toolchain install $(curl https://raw.githubusercontent.
 # install neovim (for any lean.nvim user), via tarball since the appimage doesn't work for some reason, and jammy's version is ancient
 RUN curl -s -L https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.tar.gz | tar xzf - && sudo mv nvim-linux-x86_64 /opt/nvim
 
-ENV PATH="/home/gitpod/.local/bin:/home/gitpod/.elan/bin:/opt/nvim/bin:${PATH}"
+ENV NARGO_HOME="/home/gitpod/.nargo"
+ENV PATH="/home/gitpod/.nargo/bin:/home/gitpod/.bb:/home/gitpod/.local/bin:/home/gitpod/.elan/bin:/opt/nvim/bin:${PATH}"
 
 # fix the infoview when the container is used on gitpod:
 ENV VSCODE_API_VERSION="1.50.0"
@@ -33,24 +34,16 @@ ENV VSCODE_API_VERSION="1.50.0"
 # ssh to github once to bypass the unknown fingerprint warning
 RUN ssh -o StrictHostKeyChecking=no github.com || true
 
-RUN curl -L https://raw.githubusercontent.com/noir-lang/noirup/refs/heads/main/install | bash
-RUN source $HOME/.bashrc
-RUN noirup
+RUN curl -L https://raw.githubusercontent.com/noir-lang/noirup/refs/heads/main/install | bash -s -- -y
 
-RUN curl -L https://raw.githubusercontent.com/AztecProtocol/aztec-packages/refs/heads/master/barretenberg/bbup/install | bash
-RUN source $HOME/.bashrc
-RUN bbup
+RUN curl -L https://raw.githubusercontent.com/AztecProtocol/aztec-packages/refs/heads/master/barretenberg/bbup/install | bash -s -- -y
 
 RUN curl -L https://mpenciak.net/lampe --output ./lampe
 RUN chmod +x ./lampe
 
-RUN mkdir -p $HOME/lampe
-RUN mv ./lampe $HOME/lampe/lampe
-RUN echo "export PATH=\$PATH:$HOME/lampe" >> $HOME/.bashrc
-RUN source $HOME/.bashrc
-
-RUN $(cd lampe && lake exe cache get)
-RUN $(cd lampe && lake build)
+RUN mkdir -p $HOME/.lampe
+RUN mv ./lampe $HOME/.lampe/lampe
+RUN echo "export PATH=\$PATH:$HOME/.lampe" >> $HOME/.bashrc
 
 # run sudo once to suppress usage info
 RUN sudo echo finished

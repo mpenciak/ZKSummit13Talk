@@ -4,3 +4,8 @@ image:
 vscode:
   extensions:
     - leanprover.lean4
+
+tasks:
+  - init: |
+      cd lampe && lake exe cache get
+      cd lampe && lake build
