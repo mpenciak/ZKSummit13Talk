@@ -8,5 +8,7 @@ name = "Fib"
 
 [[require]]
 name = "Lampe"
-path = "./../../../Lampe"
+git = "https://github.com/reilabs/lampe/"
+rev = "main"
+subDir = "Lampe"
 
