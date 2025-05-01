@@ -1,23 +1,6 @@
+image:
+  file: .gitpod.dockerfile
+
 vscode:
   extensions:
     - leanprover.lean4
-tasks:
-  - before: |
-      curl -L https://raw.githubusercontent.com/noir-lang/noirup/refs/heads/main/install | bash
-      noirup
-
-      curl -L https://raw.githubusercontent.com/AztecProtocol/aztec-packages/refs/heads/master/barretenberg/bbup/install | bash
-      bbup
-
-      curl -L https://mpenciak.net/lampe --output ./lampe
-      chmod +x ./lampe
-
-      mkdir -p $HOME/lampe
-      mv ./lampe $HOME/lampe/lampe
-      echo "export PATH=\$PATH:$HOME/lampe" >> $HOME/.bashrc
-
-      curl https://elan.lean-lang.org/elan-init.sh -sSf | sh
-      source $HOME/.bashrc
-
-      $(cd lampe && lake exe cache get)
-      $(cd lampe && lake build)
