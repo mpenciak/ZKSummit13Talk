@@ -12,5 +12,4 @@
             ]
         }
     },
-    "postCreateCommand": "cd lampe && lake exe cache get && lake build && popd"
 }

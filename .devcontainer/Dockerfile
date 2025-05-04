@@ -3,7 +3,7 @@ FROM ubuntu:noble
 USER root
 
 ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get update && apt-get install sudo git curl git bash-completion python3 python3-pip python3-requests  -y && apt-get clean
+RUN apt-get update && apt-get install sudo git curl git bash-completion python3 python3-pip python3-requests -y && apt-get clean
 
 RUN useradd -l -u 33333 -G sudo -md /home/gitpod -s /bin/bash -p gitpod gitpod \
     # passwordless sudo for users in the 'sudo' group
@@ -44,6 +44,11 @@ RUN chmod +x ./lampe
 RUN mkdir -p $HOME/.lampe
 RUN mv ./lampe $HOME/.lampe/lampe
 RUN echo "export PATH=\$PATH:$HOME/.lampe" >> $HOME/.bashrc
+
+RUN git clone https://github.com/mpenciak/ZKSummit13Talk
+
+RUN mv ZKSummit13Talk .zktalk
+RUN cd .zktalk/lampe && lake exe cache get && lake build
 
 # run sudo once to suppress usage info
 RUN sudo echo finished
