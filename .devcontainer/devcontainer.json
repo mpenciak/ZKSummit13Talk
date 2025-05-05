@@ -11,6 +11,5 @@
                 "noir-lang.vscode-noir"
             ]
         }
-    },
-    "postCreateCommand": "cd lampe && ln -s $HOME/.zktalk/lampe/.lake .lake"
+    }
 }
