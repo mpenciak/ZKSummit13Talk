@@ -1,5 +1,5 @@
 {"version": "1.1.0",
- "packagesDir": "$HOME/.zktalk/lampe/.lake/packages",
+ "packagesDir": "/home/gitpod/.zktalk/lampe/.lake/packages",
  "packages":
  [{"url": "https://github.com/reilabs/lampe/",
    "type": "git",
@@ -102,4 +102,4 @@
    "inherited": true,
    "configFile": "lakefile.toml"}],
  "name": "Fib",
- "lakeDir": "$HOME/.zktalk/.lake"}
+ "lakeDir": "/home/gitpod/.zktalk/.lake"}
