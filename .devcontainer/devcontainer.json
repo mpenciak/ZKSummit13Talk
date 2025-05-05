@@ -12,5 +12,5 @@
             ]
         }
     },
-    "postCreateCommand": "cd lampe && mv .lake_link .lake"
+    "postCreateCommand": "cd lampe && ln -s ../../.zktalk/lampe/.lake .lake"
 }

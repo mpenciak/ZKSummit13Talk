@@ -52,8 +52,8 @@ RUN git clone https://github.com/mpenciak/ZKSummit13Talk
 RUN mv ZKSummit13Talk .zktalk
 WORKDIR .zktalk/lampe
 
-RUN lake exe cache get --verbose
-RUN lake build --verbose
+RUN lake --verbose exe cache get
+RUN lake --verbose build
 
 # run sudo once to suppress usage info
 RUN sudo echo finished
