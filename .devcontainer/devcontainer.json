@@ -11,5 +11,6 @@
                 "noir-lang.vscode-noir"
             ]
         }
-    }
+    },
+    "postCreateCommand": "cd lampe && mv talk-manifest.json lake-manifest.json"
 }
