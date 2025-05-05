@@ -12,4 +12,5 @@
             ]
         }
     },
+    "postCreateCommand": "cd lampe && mv .lake_link .lake"
 }
