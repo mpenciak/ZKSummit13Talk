@@ -10,6 +10,7 @@ RUN useradd -l -u 33333 -G sudo -md /home/gitpod -s /bin/bash -p gitpod gitpod \
     && sed -i.bkp -e 's/%sudo\s\+ALL=(ALL\(:ALL\)\?)\s\+ALL/%sudo ALL=NOPASSWD:ALL/g' /etc/sudoers
 USER gitpod
 WORKDIR /home/gitpod
+ENV HOME=/home/gitpod
 
 SHELL ["/bin/bash", "-c"]
 
@@ -47,10 +48,9 @@ RUN mkdir -p $HOME/.lampe
 RUN mv ./lampe $HOME/.lampe/lampe
 RUN echo "export PATH=\$PATH:$HOME/.lampe" >> $HOME/.bashrc
 
-RUN git clone https://github.com/mpenciak/ZKSummit13Talk
+RUN git clone https://github.com/mpenciak/ZKSummit13Talk $HOME/.zktalk
 
-RUN mv ZKSummit13Talk .zktalk
-WORKDIR .zktalk/lampe
+WORKDIR $HOME/.zktalk/lampe
 
 RUN lake --verbose exe cache get
 RUN lake --verbose build
