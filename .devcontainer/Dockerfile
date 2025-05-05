@@ -41,11 +41,9 @@ RUN curl -L https://raw.githubusercontent.com/noir-lang/noirup/refs/heads/main/i
 
 RUN curl -L https://raw.githubusercontent.com/AztecProtocol/aztec-packages/refs/heads/master/barretenberg/bbup/install | bash -s -- -y
 
-RUN curl -L https://mpenciak.net/lampe --output ./lampe
-RUN chmod +x ./lampe
-
 RUN mkdir -p $HOME/.lampe
-RUN mv ./lampe $HOME/.lampe/lampe
+RUN curl -L https://mpenciak.net/lampe --output $HOME/.lampe/lampe
+RUN chmod +x $HOME/.lampe/lampe
 RUN echo "export PATH=\$PATH:$HOME/.lampe" >> $HOME/.bashrc
 
 RUN git clone https://github.com/mpenciak/ZKSummit13Talk $HOME/.zktalk
