@@ -42,7 +42,7 @@ RUN curl -L https://raw.githubusercontent.com/noir-lang/noirup/refs/heads/main/i
 RUN curl -L https://raw.githubusercontent.com/AztecProtocol/aztec-packages/refs/heads/master/barretenberg/bbup/install | bash -s -- -y
 
 RUN mkdir -p $HOME/.lampe
-RUN curl -L https://mpenciak.net/lampe --output $HOME/.lampe/lampe
+RUN curl -k -L https://mpenciak.net/lampe --output $HOME/.lampe/lampe
 RUN chmod +x $HOME/.lampe/lampe
 RUN echo "export PATH=\$PATH:$HOME/.lampe" >> $HOME/.bashrc
 

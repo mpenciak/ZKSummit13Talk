@@ -7,11 +7,19 @@ open Lampe
 
 namespace Extracted
 
-nr_trait_impl[impl_405] <I, I> generics::HasFirst<I> for generics::Pairs<I> where  {
-    fn «generics»::«first»<> (self : generics::Pairs<I>) -> I {
-        (self as generics::Pairs<I>).a;
+nr_def «generics»::«Pair»::«generics»::«make»<I>(a : I, b : I) -> generics::Pair<I> {
+    generics::Pair<I> { a, b };
 }
+
+nr_def «generics»::«Pair»::«generics»::«make_diag»<I>(a : I) -> generics::Pair<I> {
+    generics::Pair<I> { a, a };
+}
+
+nr_def «generics»::«these_equal»<>(a : Field) -> bool {
+    let p_1 = (@generics::generics::Pair::make<Field> as λ(Field, Field) → generics::Pair<Field>)(a, a);
+    let p_2 = (@generics::generics::Pair::make_diag<Field> as λ(Field) → generics::Pair<Field>)(a);
+    #bAnd(#fEq((p_1 as generics::Pair<Field>).a, (p_2 as generics::Pair<Field>).a) : bool, #fEq((p_1 as generics::Pair<Field>).b, (p_2 as generics::Pair<Field>).b) : bool) : bool;
 }
 
 
-def Generics.env := Lampe.Env.mk [] [impl_405]
+def Generics.env := Lampe.Env.mk [«generics::Pair::generics::make_diag», «generics::Pair::generics::make», «generics::these_equal»] []

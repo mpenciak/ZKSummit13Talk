@@ -29,7 +29,7 @@ lemma fib_induction (i : U 32) (hhi : i < (2 ^ 32 : Nat) - 2)
   simp [_root_.fib]
 
 theorem fib_spec {N : U 32} (h : N < (2 ^ 32 : Nat) - 2) :
-    STHoare p Extracted.env ⟦⟧ (Extracted.fib.call h![N] h![])
+    STHoare p Extracted.env ⟦⟧ (Extracted.«fib::fib».call h![N] h![])
       fun output => output = fib p N := by
   enter_decl
   steps
