@@ -50,6 +50,7 @@ RUN git clone https://github.com/mpenciak/ZKSummit13Talk $HOME/.zktalk
 
 WORKDIR $HOME/.zktalk/lampe
 
+RUN lake --verbose update
 RUN lake --verbose exe cache get
 RUN lake --verbose build
 
