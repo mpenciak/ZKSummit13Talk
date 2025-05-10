@@ -6,3 +6,7 @@ open Lampe
 
 namespace Extracted
 
+nr_struct_def generics::Pairs<I> {
+    a : I,
+    b : I
+}

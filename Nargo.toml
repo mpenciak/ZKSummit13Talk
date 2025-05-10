@@ -1,5 +1,5 @@
 [package]
-name = "Fib"
+name = "Examples"
 type = "lib"
 authors = [""]
 
