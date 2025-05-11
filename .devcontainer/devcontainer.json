@@ -1,6 +1,6 @@
 {
     "name": "TryLampe",
-    "image": "ghcr.io/mpenciak/devcontainertest:v1.0",
+    "image": "ghcr.io/mpenciak/zksummittalk:latest",
     "customizations": {
         "vscode": {
             "extensions": [
