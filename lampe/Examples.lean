@@ -2,3 +2,4 @@
 
 import Examples.Extracted
 import Examples.FibSpec
+import Examples.GenericsSpec

@@ -16,8 +16,8 @@ nr_def «generics»::«Pair»::«generics»::«make_diag»<I>(a : I) -> generics
 }
 
 nr_def «generics»::«these_equal»<>(a : Field) -> bool {
-    let p_1 = (@generics::generics::Pair::make<Field> as λ(Field, Field) → generics::Pair<Field>)(a, a);
-    let p_2 = (@generics::generics::Pair::make_diag<Field> as λ(Field) → generics::Pair<Field>)(a);
+    let p_1 = (@generics::Pair::generics::make<Field> as λ(Field, Field) → generics::Pair<Field>)(a, a);
+    let p_2 = (@generics::Pair::generics::make_diag<Field> as λ(Field) → generics::Pair<Field>)(a);
     #bAnd(#fEq((p_1 as generics::Pair<Field>).a, (p_2 as generics::Pair<Field>).a) : bool, #fEq((p_1 as generics::Pair<Field>).b, (p_2 as generics::Pair<Field>).b) : bool) : bool;
 }
 
